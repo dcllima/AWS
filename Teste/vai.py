@@ -8,6 +8,10 @@ if __name__ == "__main__":
 
     view = parquetFile.createOrReplaceTempView("teste")
 
+    sc.sql("select * from teste").show()
+
+
+
     sc.stop()
 
 
