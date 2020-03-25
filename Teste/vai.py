@@ -10,9 +10,4 @@ if __name__ == "__main__":
 
     sc.sql("select * from teste").show()
 
-
-
     sc.stop()
-
-
-
