@@ -1,5 +1,4 @@
 from boto3 import s3
-from docutils.nodes import paragraph
 from pyspark.sql import SparkSession
 
 if __name__ == "__main__":
@@ -9,6 +8,7 @@ if __name__ == "__main__":
 
     view = parquetFile.createOrReplaceTempView("teste")
 
-    sc.sql("select * from teste").show()
+    sc.stop()
+
 
 
