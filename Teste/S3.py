@@ -1,5 +1,5 @@
 import boto3
-from pyspark.sql import SparkSession
+from pyspark.sql import SparkSession,SQLContext
 import pandas as pd
 
 if __name__ == "__main__":
@@ -15,6 +15,7 @@ if __name__ == "__main__":
     fileData = obj['Body'].read()
     '''
     sc = SparkSession.Builder().appName("Teste").getOrCreate()
+    spark = SQLContext(sc)
     csv = pd.read_csv(
         "s3://ve-datalake-stage-vg-dev/gene/contratos/comercial/tmp_aditivos/dt_ref=2020-03-18/Aditivos.csv")
 
