@@ -1,14 +1,15 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StringType, StructField, StructType, IntegerType, DateType, DoubleType, ArrayType
+'''
 import datetime
 from dateutil.relativedelta import relativedelta
 from pyspark.sql.functions import udf, collect_list, explode, concat_ws, to_date, lit, when, month, year, dayofmonth, \
     concat, round, isnull, coalesce, abs, datediff, add_months, date_sub, trunc, max, last_day
 from pyspark.sql.types import IntegerType
-
+'''
 if __name__ == "__main__":
 
-    spark = SparkSession.builder.appName("BalancoEnergeticoPy").getOrCreate()
+    spark = SparkSession.builder.master("spark://ec2-3-80-170-100.compute-1.amazonaws.com:7077").appName("BalancoEnergeticoPy").getOrCreate()
 
     spark.conf.set("spark.sql.crossJoin.enabled", 'true')
     spark.conf.set("spark.executor.memory", "5g")
@@ -684,6 +685,7 @@ if __name__ == "__main__":
     # ler Arquivo
     a = spark.read.csv('s3://ve-datalake-stage-vg-dev/gene/contratos/comercial/tmp_aditivos/',
                        schema=aditivosSchema).coalesce(20)
+    '''
     ct = spark.read.csv('s3://ve-datalake-stage-vg-dev/gene/contratos/comercial/tmp_categorias/',
                         schema=categoriasSchema)
     ctc = spark.read.csv('s3://ve-datalake-stage-vg-dev/gene/contratos/comercial/tmp_categoriasContratos/',
@@ -4890,4 +4892,5 @@ if __name__ == "__main__":
 											DataVigencia \
 									 FROM VW_SERIE_IPCA) AS FIM ON FIM.DataVigencia = A.DT_FIM_DataVigencia")
 
-    TbFinalSazoStep10.show(10)
+    #TbFinalSazoStep10.show(10)
+        '''
