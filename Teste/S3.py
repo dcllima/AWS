@@ -39,6 +39,6 @@ if __name__ == "__main__":
 
     df = spark.createDataFrame(csv, schema=aditivosSchema)
     df.printSchema()
-    df.show()
+    df.where(df.)
 
     sc.stop()
