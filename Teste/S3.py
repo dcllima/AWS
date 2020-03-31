@@ -40,4 +40,5 @@ if __name__ == "__main__":
     df = spark.createDataFrame(csv, schema=aditivosSchema)
     df.printSchema()
     df.show()
+
     sc.stop()
