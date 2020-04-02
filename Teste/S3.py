@@ -20,6 +20,7 @@ if __name__ == "__main__":
     sc = SparkSession.Builder().appName("Teste").enableHiveSupport().getOrCreate()
     # sc.conf.set("spark.driver.memory", "4g")
     print(sc.conf.get("spark.sql.shuffle.partitions"))
+    print(sc.conf.get("spark.driver.memory"))
     spark = SQLContext(sc)
 
     aditivosSchema = StructType([
@@ -39,7 +40,7 @@ if __name__ == "__main__":
         StructField("IdOpcoesFaturamento", StringType(), True)])
 
     csv = pd.read_csv(
-        "s3://ve-datalake-stage-vg-dev/gene/contratos/comercial/tmp_aditivos/dt_ref=2020-03-18/Aditivos.csv")
+        "s3a://ve-datalake-stage-vg-dev/gene/contratos/comercial/tmp_aditivos/dt_ref=2020-03-18/Aditivos.csv")
 
     df = spark.createDataFrame(csv, schema=aditivosSchema)
 
