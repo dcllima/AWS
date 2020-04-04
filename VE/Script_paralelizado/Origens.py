@@ -956,7 +956,6 @@ def fc_Qtd_Horas_Mes(df,Ref) :
              .when((year(df.pRef) > lit(2020)) & (month(df.pRef) == lit(2)), lit(1))
              .otherwise(0))
      df = df.withColumn("Qtd_horas",abs(datediff(df.endDay,df.firstDay)+lit(1))*lit(24)+ df.Qtd)
-
      df2 = df.drop(df.pRef) \
               .drop(df.nextMonth) \
               .drop(df.firstDay) \
